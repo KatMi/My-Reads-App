@@ -12,9 +12,9 @@ class HomePage extends Component {
                 </div>
                 <div className="list-books-content">
                     <div>
-                        <Shelf title='Currently Reading' books={ this.props.currentlyReading } shelfUpdate={ this.props.shelfUpdate }/>
-                        <Shelf title='Want to Read' books={ this.props.wantToRead } shelfUpdate={ this.props.shelfUpdate }/>
-                        <Shelf title='Read' books={ this.props.read } shelfUpdate={ this.props.shelfUpdate }/>
+                        <Shelf title='Currently Reading' shelf='currentlyReading' books={ this.props.currentlyReading } shelfUpdate={ this.props.shelfUpdate }/>
+                        <Shelf title='Want to Read' shelf='wantToRead' books={ this.props.wantToRead } shelfUpdate={ this.props.shelfUpdate }/>
+                        <Shelf title='Read' shelf='read' books={ this.props.read } shelfUpdate={ this.props.shelfUpdate }/>
                     </div>
                 </div>
                 <div className="open-search">
