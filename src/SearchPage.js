@@ -16,6 +16,7 @@ class SearchPage extends Component {
         this.updateBooks(query)
     }
    
+    // if an existing book is searched, display it; otherwise leave the page empty 
     updateBooks = (query) => {
         if (query) {
             BooksAPI.search(query).then((books) => {
@@ -34,11 +35,11 @@ class SearchPage extends Component {
     }
 
     render() {
-        
+        // display the searched books on the right (or none) shelf 
         this.state.books.map((books) => {
-            books.shelf = "none"
+            let booksShelf = "none"
             this.state.books.map((book) => {
-                books.id === book.id ? books.shelf=book.shelf : ""}
+                books.id === book.id ? bookShelf = bookShelf : ""}
             )})
 
         return ( 
