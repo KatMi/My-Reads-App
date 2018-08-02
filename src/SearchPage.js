@@ -8,39 +8,42 @@ class SearchPage extends Component {
 
     state={
         query: '',
-        books: []
+        bookResults: []
     }
 
     updateQuery = (query) => {
         this.setState({ query });
-        this.updateBooks(query)
+        this.getBookResults(query)
     }
    
     // if an existing book is searched, display it; otherwise leave the page empty 
-    updateBooks = (query) => {
+    getBookResults = (query) => {
         if (query) {
-            BooksAPI.search(query).then((books) => {
-                if (books.error) { 
+            BooksAPI.search(query).then((bookResults) => {
+                if (bookResults.error) { 
                     document.getElementById("book-results").style.padding = "0 10px 20px 20px";
-                    this.setState({ books: [] })
+                    this.setState({ bookResults: [] })
                 } else {
                     document.getElementById("book-results").style.padding = "80px 10px 20px 20px";
-                    this.setState({ books })
+                    this.setState({ bookResults })
                 }
             })
         } else {
             document.getElementById("book-results").style.padding = "0 10px 20px 20px";
-            this.setState({ books: [] })
+            this.setState({ bookResults: [] })
         }
     }
 
     render() {
         // display the searched books on the right (or none) shelf 
-        this.state.books.map((books) => {
-            let booksShelf = "none"
-            this.state.books.map((book) => {
-                books.id === book.id ? bookShelf = bookShelf : ""}
-            )})
+        this.state.bookResults.map((bookResults) => {
+            bookResult.shelf = "none";
+            return (
+                this.props.books.map((book) => {
+                    bookResult.id === book.id ? bookResult.shelf = book.shelf : "";
+                    return bookResult.shelf;
+                }
+            ))})
 
         return ( 
             <div className="search-books">
@@ -55,9 +58,9 @@ class SearchPage extends Component {
                  </div >
                  <div id="book-results" className="search-books-results" >
                      <ol className="books-grid" > 
-                         { this.state.books.map((book) => (<li key={ book.id }>
+                         { this.state.bookResults.map((bookResult) => (<li key={ bookResult.id }>
                              <Book 
-                                 book={ book }
+                                 book={ bookResult }
                                  shelfUpdate={ this.props.shelfUpdate }
                              /> 
                          </li>))} 
